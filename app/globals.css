@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --ink: 255 255 255;
+  --panel: 239 250 255;
+  --line: 194 226 239;
+  --fog: 71 105 123;
+  --paper: 16 45 64;
+  --brass: 14 165 233;
+  --posted: 15 128 111;
+  --draft: 159 85 20;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: 14 23 38;
+  --panel: 20 31 51;
+  --line: 36 50 74;
+  --fog: 160 176 199;
+  --paper: 230 234 242;
+  --brass: 56 189 248;
+  --posted: 92 200 160;
+  --draft: 232 135 91;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body {
+  @apply bg-ink text-paper font-sans antialiased;
+}
+::selection { background: #bae6fd; color: #0E1726; }
+body { transition: background-color .2s, color .2s; }
+html[dir="rtl"] body { font-family: "Segoe UI", Tahoma, sans-serif; }
+html[dir="rtl"] h1 { line-height: 1.5; }
+html[dir="rtl"] h2 { line-height: 1.4; }
+:root[data-theme="light"] figure > div { box-shadow: 0 24px 70px -30px rgb(14 165 233 / .3); }
+
+/* Visible keyboard focus everywhere */
+:focus-visible { outline: 2px solid rgb(var(--brass)); outline-offset: 3px; border-radius: 4px; }
+
+/* Faint ledger grid behind the hero */
+.ledger-grid {
+  background-image:
+    linear-gradient(to right, rgb(var(--line) / .45) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(var(--line) / .45) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse at 70% 40%, black 20%, transparent 70%);
+  mask-image: radial-gradient(ellipse at 70% 40%, black 20%, transparent 70%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
