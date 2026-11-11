@@ -14,4 +14,5 @@ Built with Next.js 14 (App Router), React, Tailwind CSS and Framer Motion.
 3. Put your CV at public/cv.pdf.
 
 ## Deploy
-Push to GitHub, then import the repo at vercel.com. No settings needed.
+Every push to `main` builds a static export (`out/`) and publishes it to
+GitHub Pages via `.github/workflows/deploy.yml`.
